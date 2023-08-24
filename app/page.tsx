@@ -19,7 +19,7 @@ function PostCard(post: Post) {
 }
 
 export default function Home() {
-  const posts = allPosts.sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)))
+  const posts = allPosts.sort((a, b) => compareDesc(new Date(a.date), new Date(b.date))).filter((v) => !v.hide)
 
   return (
     <div className="max-w-3xl px-4 py-8 mx-auto divide-y divide-gray-200 dark:divide-gray-700">

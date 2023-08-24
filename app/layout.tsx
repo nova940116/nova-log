@@ -5,10 +5,10 @@ import { ThemeProviders } from "./components/theme-providers"
 import Header from './components/header'
 import Footer from './components/footer'
 
-const pretendard = localFont({
-  src: '../public/PretendardVariable.woff2',
-  display: 'swap',
-})
+// const pretendard = localFont({
+//   src: '../public/PretendardVariable.woff2',
+//   display: 'swap',
+// })
 
 export const metadata: Metadata = {
   title: 'Next13 Blog Starter',
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko" suppressHydrationWarning>
-      <body className={`${pretendard.className} selection:bg-orange-400 selection:text-black dark:selection:text-white`}>
+      <body className={`selection:bg-orange-400 selection:text-black dark:selection:text-white`}>
         <ThemeProviders>
           <Header />
             {children}

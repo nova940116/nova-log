@@ -37,7 +37,7 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
   const Content = getMDXComponent(post!.body.code)
 
   return (
-    <article className="px-4 py-8 mx-auto max-w-3xl prose dark:prose-invert">
+    <article className="px-4 py-8 mx-auto max-w-3xl prose dark:prose-invert prose-code:text-lg">
       <div className="mb-24 text-center">
         <h1>{post?.title}</h1>
       </div>

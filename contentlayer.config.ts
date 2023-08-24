@@ -10,7 +10,8 @@ const Post = defineDocumentType(() => ({
   fields: {
     title: { type: 'string', required: true },
     summary: { type: 'string' },
-    date: { type: 'date', required: true }
+    date: { type: 'date', required: true },
+    hide: { type: 'boolean' }
   },
   computedFields: {
     url: {
