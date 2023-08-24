@@ -19,11 +19,11 @@ export const generateMetadata = ({ params }: Props) => {
     openGraph: {
       title: post?.title,
       description: post?.summary,
-      url: 'https://next13-blog-starter-psi.vercel.app',
+      url: 'https://nova-log.vercel.app',
       siteName: 'Next13 Blog Starter',
       images: [
         {
-          url: 'https://next13-blog-starter-psi.vercel.app/thumbnail.png',
+          url: 'https://nova-log.vercel.app/thumbnail.png',
           width: 800,
           height: 600,
         },
