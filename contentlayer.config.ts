@@ -1,5 +1,6 @@
 import { defineDocumentType, makeSource } from 'contentlayer/source-files'
 import { remarkCodeTitles } from 'pliny/mdx-plugins/index.js'
+import remarkGfm from 'remark-gfm'
 import rehypePrismPlus from 'rehype-prism-plus'
 
 
@@ -25,7 +26,7 @@ export default makeSource({
   contentDirPath: 'posts',
   documentTypes: [Post],
   mdx: {
-    remarkPlugins: [remarkCodeTitles],
+    remarkPlugins: [remarkGfm, remarkCodeTitles],
     rehypePlugins: [rehypePrismPlus],
   },   
   onSuccess: async (importData) => {

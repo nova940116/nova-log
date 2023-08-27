@@ -158,11 +158,6 @@ th {
   padding: 8px 0
 }
 
-td:first-child {
-  font-weight: 700;
-  text-align: right
-}
-
 ul {
   margin-bottom: 6px
 }

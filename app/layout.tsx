@@ -9,7 +9,7 @@ const IBMPlexSansKR = IBM_Plex_Sans_KR({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-ibm-flex-sans-kr',
-  weight: ["500"]
+  weight: ["300", "500"]
 })
 
 export const metadata: Metadata = {
