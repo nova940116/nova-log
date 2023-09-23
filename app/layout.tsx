@@ -3,13 +3,12 @@ import type { Metadata } from 'next'
 import { ThemeProviders } from "./components/theme-providers"
 import Header from './components/header'
 import Footer from './components/footer'
-import { IBM_Plex_Sans_KR } from 'next/font/google'
+import { Noto_Sans_KR } from 'next/font/google'
 
-const IBMPlexSansKR = IBM_Plex_Sans_KR({
+const NotoSansKR = Noto_Sans_KR({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-ibm-flex-sans-kr',
-  weight: ["300", "500"]
+  weight: ["100", "300", "400", "500", "700", "900"]
 })
 
 export const metadata: Metadata = {
@@ -34,7 +33,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ko" className={`${IBMPlexSansKR.variable} scroll-smooth`} suppressHydrationWarning>
+    <html lang="ko" className={`${NotoSansKR.className} scroll-smooth`} suppressHydrationWarning>
       <body className={`selection:bg-orange-400 selection:text-black dark:selection:text-white`}>
         <ThemeProviders>
           <Header />

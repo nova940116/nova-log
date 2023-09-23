@@ -1,5 +1,4 @@
 import type { Config } from 'tailwindcss'
-const { fontFamily } = require('tailwindcss/defaultTheme')
 
 const config: Config = {
   content: [
@@ -9,13 +8,7 @@ const config: Config = {
     './node_modules/pliny/**/*.js'
   ],
   darkMode: "class",
-  theme: {
-    extend: {
-      fontFamily: {
-        sans: ['var(--font-ibm-flex-sans-kr)', ...fontFamily.sans],
-      }
-    }
-  },
+  theme: {},
   plugins: [require('@tailwindcss/typography')],
 }
 export default config

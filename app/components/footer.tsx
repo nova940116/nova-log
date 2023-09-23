@@ -8,7 +8,7 @@ export default function Footer() {
         </div>
         <div className="mb-2 flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
           <div>{`© ${new Date().getFullYear()}`}</div>
-          <div>{` | `}</div>
+          <div>{` • `}</div>
           <Link href="/">노바 블로그</Link>
         </div>
       </div>
