@@ -7,9 +7,9 @@ function PostCard(post: Post) {
     <div className="py-4 cursor-pointer">  
       <Link href={post.url}>
         <div>
-          <h1 className="text-xl font-bold mb-5">{post.title}</h1>
+          <h1 className="text-xl font-extrabold mb-5">{post.title}</h1>
           <p className="text-md mb-5">{post.summary}</p>
-          <time dateTime={post.date} className="block text-sm">
+          <time dateTime={post.date} className="block text-sm text-[#888]">
             {format(parseISO(post.date), "yyyy.MM.dd")}
           </time>  
         </div>
@@ -22,7 +22,7 @@ export default function Home() {
   const posts = allPosts.sort((a, b) => compareDesc(new Date(a.date), new Date(b.date))).filter((v) => !v.hide)
 
   return (
-    <div className="max-w-3xl px-4 py-8 mx-auto divide-y divide-gray-200 dark:divide-gray-700">
+    <div className="max-w-3xl px-4 py-8 mx-auto divide-y divide-gray-200">
       {posts.map((post, idx) => (
         <PostCard key={idx} {...post} />
       ))}      

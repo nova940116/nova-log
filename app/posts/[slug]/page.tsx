@@ -22,7 +22,7 @@ export const generateMetadata = ({ params }: Props) => {
       title: post?.title,
       description: post?.summary,
       url: 'https://nova-log.vercel.app',
-      siteName: 'Next13 Blog Starter',
+      siteName: '노바로그',
       images: [
         {
           url: 'https://nova-log.vercel.app/thumbnail.png',
@@ -47,7 +47,7 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
         <Image className='rounded-full border border-black/[.1] dark:border-[#888]' width={48} height={48} src="/avatartion.png" alt="author" />
         <div className='flex flex-col justify-center p-4'>
           <span>윤정현(Nova)</span>
-          <span>{formatDataKR(new Date(post!.date))}</span>
+          <span className='text-[#888] text-sm'>{formatDataKR(new Date(post!.date))}</span>
         </div>
       </div>
       <div className="break-all">
@@ -62,10 +62,10 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
         </div>
       </div>
       <div>
-        👨‍💻 서울에서 프리랜서로 일하고 있는 개발자 입니다.<br />
-        ✅ 2022. 08 ~ 2023. 03 SK렌터카<br />
-        ✅ 2023. 08 ~ SK-ON<br />
-        🖥️ <a href="https://foryouwave.com">널위한물결</a> 이라는 서비스를 운영하고 있습니다.
+        🙂 사이드 프로젝트 개발 및 운영을 취미로 삼고있습니다<br />
+        🗃️ 운영중인 프로젝트<br />
+        - <a href="https://foryouwave.com" target='_blank' className='underline-offset-4'>널위한물결</a><br />
+        - <a href="https://thumbnail-maker.vercel.app" target='_blank' className='underline-offset-4'>썸네일제작소</a><br />
       </div>
       <hr />
       <Comments

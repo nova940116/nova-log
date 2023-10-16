@@ -3,16 +3,16 @@ import type { Metadata } from 'next'
 import { ThemeProviders } from "./components/theme-providers"
 import Header from './components/header'
 import Footer from './components/footer'
-import { Noto_Sans_KR } from 'next/font/google'
+import { Nanum_Gothic } from 'next/font/google'
 
-const NotoSansKR = Noto_Sans_KR({
+const NanumGothic = Nanum_Gothic({
   subsets: ['latin'],
   display: 'swap',
-  weight: ["100", "300", "400", "500", "700", "900"]
+  weight: ["400", "700", "800"]
 })
 
 export const metadata: Metadata = {
-  title: 'Nova Blog',
+  title: '노바로그',
   description: '노바의 개발블로그',
   openGraph: {
     title: 'Nova Blog',
@@ -33,8 +33,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ko" className={`${NotoSansKR.className} scroll-smooth`} suppressHydrationWarning>
-      <body className={`selection:bg-orange-400 selection:text-black dark:selection:text-white`}>
+    <html lang="ko" className={`${NanumGothic.className} scroll-smooth`} suppressHydrationWarning>
+      <body className={`selection:bg-orange-400 selection:text-white bg-[#FFFAF6]`}>
         <ThemeProviders>
           <Header />
           {children}

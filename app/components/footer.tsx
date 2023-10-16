@@ -7,9 +7,9 @@ export default function Footer() {
         <div className="mb-3 flex space-x-4">
         </div>
         <div className="mb-2 flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
-          <div>{`© ${new Date().getFullYear()}`}</div>
+          <div>© 2023</div>
           <div>{` • `}</div>
-          <Link href="/">노바 블로그</Link>
+          <Link href="/">노바로그</Link>
         </div>
       </div>
     </footer>
