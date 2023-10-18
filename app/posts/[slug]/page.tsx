@@ -39,12 +39,12 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
   const Content = getMDXComponent(post!.body.code)
 
   return (
-    <article className="px-4 py-8 mx-auto max-w-3xl prose dark:prose-invert">
+    <article className="px-4 py-8 mx-auto max-w-3xl prose">
       <div className="text-center">
         <h1 className='leading-[1.5]'>{post?.title}</h1>
       </div>
       <div className='flex'>
-        <Image className='rounded-full border border-black/[.1] dark:border-[#888]' width={48} height={48} src="/avatartion.png" alt="author" />
+        <Image className='rounded-full border border-black/[.1]' width={48} height={48} src="/avatartion.png" alt="author" />
         <div className='flex flex-col justify-center p-4'>
           <span>윤정현(Nova)</span>
           <span className='text-[#888] text-sm'>{formatDataKR(new Date(post!.date))}</span>
@@ -54,7 +54,7 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
         <Content />
       </div>
       <div className='flex'>
-        <Image className='rounded-full border border-black/[.1] dark:border-[#888]' width={72} height={72} src="/avatartion.png" alt="author" />
+        <Image className='rounded-full border border-black/[.1]' width={72} height={72} src="/avatartion.png" alt="author" />
         <div className='flex flex-col justify-center p-4'>
           <span>윤정현(Nova)</span>
         </div>
