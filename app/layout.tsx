@@ -1,6 +1,5 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { ThemeProviders } from "./components/theme-providers"
 import Header from './components/header'
 import Footer from './components/footer'
 import { Nanum_Gothic } from 'next/font/google'
@@ -34,14 +33,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ko" className={`${NanumGothic.className} scroll-smooth`} suppressHydrationWarning>
+    <html lang="ko" className={`${NanumGothic.className} scroll-smooth`}>
       <body className={`selection:bg-orange-400 selection:text-white bg-[#FFFAF6]`}>
-        <ThemeProviders>
-          <Header />
-          {children}
-          <Analytics />
-          <Footer />
-        </ThemeProviders>
+        <Header />
+        {children}
+        <Analytics />
+        <Footer />
       </body>
     </html>
   )
