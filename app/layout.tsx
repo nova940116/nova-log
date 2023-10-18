@@ -4,6 +4,7 @@ import { ThemeProviders } from "./components/theme-providers"
 import Header from './components/header'
 import Footer from './components/footer'
 import { Nanum_Gothic } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/react'
 
 const NanumGothic = Nanum_Gothic({
   subsets: ['latin'],
@@ -38,6 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ThemeProviders>
           <Header />
           {children}
+          <Analytics />
           <Footer />
         </ThemeProviders>
       </body>
