@@ -1,44 +1,55 @@
-import './globals.css'
-import type { Metadata } from 'next'
-import Header from './components/header'
-import Footer from './components/footer'
-import { Nanum_Gothic } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/react'
+import Link from "next/link"
+import "./globals.css"
+import { Noto_Sans_KR } from "next/font/google"
+import { ThemeProvider } from "@/components/theme-provider"
+import { Analytics } from "@/components/analytics"
+import { ModeToggle } from "@/components/mode-toggle"
+import Logo from "@/icons/logo"
 
-const NanumGothic = Nanum_Gothic({
-  subsets: ['latin'],
-  display: 'swap',
-  weight: ["400", "700", "800"]
-})
+const NotoSansKR = Noto_Sans_KR({ subsets: ["latin"] })
 
-export const metadata: Metadata = {
+export const metadata = {
   title: '노바로그',
-  description: '노바의 개발블로그',
+  description: '취향을 잔뜩 담은 나의 공간',
+  metadataBase: new URL('https://nova-log.vercel.app'),
+  alternates: {
+    canonical: '/'
+  },  
   openGraph: {
-    title: 'Nova Blog',
-    description: '노바의 개발블로그',
-    url: 'https://nova-log.vercel.app',
-    siteName: 'Nova ',
-    images: [
-      {
-        url: 'https://nova-log.vercel.app/thumbnail.png',
-        width: 800,
-        height: 600,
-      },
-    ],
-    locale: 'ko_KR',
-    type: 'website',
+    images: 'https://nova-log.vercel.app/thumbnail.png',
   },  
 }
+interface RootLayoutProps {
+  children: React.ReactNode
+}
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="ko" className={`${NanumGothic.className} scroll-smooth`}>
-      <body className={`selection:bg-orange-400 selection:text-white bg-[#FFFAF6]`}>
-        <Header />
-        {children}
-        <Analytics />
-        <Footer />
+    <html lang="ko">
+      <body
+        className={`antialiased min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-50 ${NotoSansKR.className}`}
+      >
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <div>
+            <header className="py-4 px-3">
+              <div className="flex items-center">
+                <nav className="space-x-6 mr-4">
+                  <Link className="flex items-center" href="/">
+                    <Logo className="w-[24px] h-[24px]" />
+                  </Link>
+                  {/* <Link href="/about">About</Link> */}
+                </nav>
+                <ModeToggle />
+              </div>
+            </header>
+            <main className="grid grid-cols-1 sm:grid-cols-[1fr_minmax(48rem,_1fr)_1fr] lg:grid-cols-[1fr_minmax(48rem,_1fr)_1fr]">
+              <section></section>
+              <section className="flex justify-center">{children}</section>
+              <section></section>
+            </main>
+          </div>
+          <Analytics />
+        </ThemeProvider>
       </body>
     </html>
   )

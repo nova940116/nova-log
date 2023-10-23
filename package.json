@@ -1,36 +1,34 @@
 {
-  "name": "next-theme-test",
+  "name": "next-contentlayer",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "preview": "next build && next start",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
-    "@types/node": "20.5.1",
-    "@types/react": "18.2.20",
-    "@types/react-dom": "18.2.7",
+    "@tailwindcss/typography": "^0.5.10",
+    "@types/node": "20.8.7",
+    "@types/react": "18.2.31",
+    "@types/react-dom": "18.2.14",
     "@vercel/analytics": "^1.1.1",
-    "autoprefixer": "10.4.15",
+    "autoprefixer": "10.4.16",
     "contentlayer": "^0.3.4",
-    "date-fns": "^2.30.0",
-    "eslint": "8.47.0",
-    "eslint-config-next": "13.4.19",
-    "next": "13.4.19",
+    "eslint": "8.52.0",
+    "eslint-config-next": "13.5.6",
+    "next": "13.5.6",
     "next-contentlayer": "^0.3.4",
     "next-themes": "^0.2.1",
-    "pliny": "^0.1.1",
-    "postcss": "8.4.28",
+    "postcss": "8.4.31",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "rehype-prism-plus": "^1.6.3",
-    "remark-gfm": "^3.0.1",
+    "rehype-pretty-code": "^0.10.1",
+    "remark-gfm": "^4.0.0",
+    "shiki": "^0.14.5",
     "tailwindcss": "3.3.3",
-    "typescript": "5.1.6"
-  },
-  "devDependencies": {
-    "@tailwindcss/typography": "^0.5.9"
+    "typescript": "5.2.2"
   }
 }

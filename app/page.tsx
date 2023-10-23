@@ -1,31 +1,19 @@
+import { allPosts } from "@/.contentlayer/generated"
 import Link from "next/link"
-import { compareDesc, format, parseISO } from "date-fns"
-import { allPosts, Post } from "contentlayer/generated"
-
-function PostCard(post: Post) {
-  return (
-    <div className="py-4 cursor-pointer">  
-      <Link href={post.url}>
-        <div>
-          <h1 className="text-xl font-extrabold mb-5">{post.title}</h1>
-          <p className="text-md mb-5">{post.summary}</p>
-          <time dateTime={post.date} className="block text-sm text-[#888]">
-            {format(parseISO(post.date), "yyyy.MM.dd")}
-          </time>  
-        </div>
-      </Link>
-    </div>
-  )
-}
+import { formatDataKR } from "./utils"
 
 export default function Home() {
-  const posts = allPosts.sort((a, b) => compareDesc(new Date(a.date), new Date(b.date))).filter((v) => !v.hide)
-
   return (
-    <div className="max-w-3xl px-4 py-8 mx-auto divide-y divide-gray-200">
-      {posts.map((post, idx) => (
-        <PostCard key={idx} {...post} />
-      ))}      
+    <div className="prose dark:prose-invert">
+      {allPosts.map((post) => (
+        <article key={post._id}>
+          <Link href={post.slug} className="no-underline">
+            <h2>{post.title}</h2>
+          </Link>
+          <p>{post.description}</p>
+          <p className="text-gray-400 text-sm">{formatDataKR(new Date(post.date))}</p>
+        </article>
+      ))}
     </div>
   )
 }
