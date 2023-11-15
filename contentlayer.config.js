@@ -1,6 +1,8 @@
 import { defineDocumentType, makeSource } from "contentlayer/source-files"
-import remarkGfm from 'remark-gfm'
-import rehypePrettyCode from 'rehype-pretty-code'
+import rehypeAutolinkHeadings from "rehype-autolink-headings"
+import rehypePrettyCode from "rehype-pretty-code"
+import rehypeSlug from "rehype-slug"
+import remarkGfm from "remark-gfm"
 
 /** @type {import('contentlayer/source-files').ComputedFields} */
 const computedFields = {
@@ -14,9 +16,9 @@ const computedFields = {
   },
 }
 
-export const Page = defineDocumentType(() => ({
-  name: "Page",
-  filePathPattern: `pages/**/*.mdx`,
+export const Doc = defineDocumentType(() => ({
+  name: "Doc",
+  filePathPattern: `docs/**/*.mdx`,
   contentType: "mdx",
   fields: {
     title: {
@@ -26,8 +28,9 @@ export const Page = defineDocumentType(() => ({
     description: {
       type: "string",
     },
-    date: {
-      type: "string",
+    published: {
+      type: "boolean",
+      default: true,
     },
   },
   computedFields,
@@ -35,7 +38,7 @@ export const Page = defineDocumentType(() => ({
 
 export const Post = defineDocumentType(() => ({
   name: "Post",
-  filePathPattern: `posts/**/*.mdx`,
+  filePathPattern: `blog/**/*.mdx`,
   contentType: "mdx",
   fields: {
     title: {
@@ -49,18 +52,53 @@ export const Post = defineDocumentType(() => ({
       type: "date",
       required: true,
     },
+    published: {
+      type: "boolean",
+      default: true,
+    },
+    image: {
+      type: "string",
+      required: true,
+    }
   },
   computedFields,
 }))
 
-const rehypeOptions = {}
-
 export default makeSource({
   contentDirPath: "./content",
-  documentTypes: [Post, Page],
+  documentTypes: [Doc, Post],
   mdx: {
-    // remarkPlugins: [remarkGfm],
-    remarkPlugins: [],
-    rehypePlugins: [[rehypePrettyCode, rehypeOptions]],
-  }  
+    remarkPlugins: [remarkGfm],
+    rehypePlugins: [
+      rehypeSlug,
+      [
+        rehypePrettyCode,
+        {
+          theme: "github-dark",
+          onVisitLine(node) {
+            // Prevent lines from collapsing in `display: grid` mode, and allow empty
+            // lines to be copy/pasted
+            if (node.children.length === 0) {
+              node.children = [{ type: "text", value: " " }]
+            }
+          },
+          onVisitHighlightedLine(node) {
+            node.properties.className.push("line--highlighted")
+          },
+          onVisitHighlightedWord(node) {
+            node.properties.className = ["word--highlighted"]
+          },
+        },
+      ],
+      [
+        rehypeAutolinkHeadings,
+        {
+          properties: {
+            className: ["subheading-anchor"],
+            ariaLabel: "Link to section",
+          },
+        },
+      ],
+    ],
+  },
 })

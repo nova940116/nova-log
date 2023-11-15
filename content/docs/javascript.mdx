@@ -1,0 +1,75 @@
+---
+title: Javascript
+description: Javascript Tricks & Tips
+---
+
+```js {3} /appDir: true/
+const auth = { user: '' }
+console.log(!!auth.user) // false
+```
+객체에 값이 있는지 체크한다
+```js
+const a = [1, 2]
+const b = [3, 4, 1]
+
+const diff = b.filter(v => !a.find(v2 => v === v2)) // [3, 4]
+const not = a.filter(v => !b.find(v2 => v === v2)) // [2]
+```
+배열간의 diff 계산
+```js
+Promise.all[...event.target.files].map(file => this.files.push(file)))
+```
+파일 데이터 싱글, 멀티 모두 처리하는 방식
+```js
+Math.floor(100000 + Math.random() * 900000)
+```
+랜덤한 6자리 난수
+```js
+// Browser
+self.crypto.randomUUID()
+
+// Node.js >= 19.0
+import Crypto from "crypto"
+Crypto.randomUUID()
+```
+UUID를 별도 라이브러리 설치 없이 생성가능
+```js
+const arr = [1, 2]
+const arr2 = [1, 2]
+
+arr.includes(...arr2) // false
+
+arr.some((v, i) => v === arr2[i]) // true
+```
+includes는 내부적으로 === 연산자를 사용하므로 객체가 같은 값을 가지더라도 false를 리턴한다.   
+some을 사용하여 비교 할 수 있다.
+```js
+const arr = [2, 2]
+const arr2 = [...new Set(arr)]
+```
+단순배열 중복제거
+```js
+const example = [{ id: 123 }, { id: 456 }, { id: 123 }]
+
+// lodash
+const arr = _.uniqBy(example, "id")
+
+// reduce
+example.reduce(function(acc, current) {
+  if (acc.findIndex(({ id }) => id === current.id) === -1) {
+    acc.push(current);
+  }
+  return acc;
+}, [])
+
+// filter
+example.filter(
+  (arr, index, callback) => index === callback.findIndex(t => t.id === arr.id)
+);
+
+// Set
+// Set의 경우 값이 완전히 같지 않으면 제거하지 않는다.
+// 따라서 객체의 속성이 1개만 있거나, 객체 값이 완전히 같은 것을 중복 제거 할 경우만 써야한다.
+const arr = [...new Set(example.map(JSON.stringify))].map(JSON.parse)
+```
+객체배열 중복제거

@@ -1,54 +1,107 @@
-import Link from "next/link"
-import "./globals.css"
-import { Noto_Sans_KR } from "next/font/google"
-import { ThemeProvider } from "@/components/theme-provider"
+import { Inter as FontSans } from "next/font/google"
+import localFont from "next/font/local"
+
+import "@/styles/globals.css"
+import { cn } from "@/lib/utils"
+import { Toaster } from "@/components/ui/toaster"
 import { Analytics } from "@/components/analytics"
+import { ThemeProvider } from "@/components/theme-provider"
+import { docsConfig } from "@/config/docs"
+import { siteConfig } from "@/config/site"
+import { Icons } from "@/components/icons"
+import { MainNav } from "@/components/main-nav"
 import { ModeToggle } from "@/components/mode-toggle"
-import Logo from "@/icons/logo"
+import { DocsSidebarNav } from "@/components/sidebar-nav"
+import { SiteFooter } from "@/components/site-footer"
+import Link from "next/link"
 
-const NotoSansKR = Noto_Sans_KR({ subsets: ["latin"] })
+const fontSans = FontSans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+})
 
-export const metadata = {
-  title: '노바로그',
-  description: '취향을 잔뜩 담은 나의 공간',
-  metadataBase: new URL('https://nova-log.vercel.app'),
-  alternates: {
-    canonical: '/'
-  },  
-  openGraph: {
-    images: 'https://nova-log.vercel.app/thumbnail.png',
-  },  
-}
+// Font files can be colocated inside of `pages`
+const fontHeading = localFont({
+  src: "../assets/fonts/CalSans-SemiBold.woff2",
+  variable: "--font-heading",
+})
+
 interface RootLayoutProps {
   children: React.ReactNode
 }
 
+export const metadata = {
+  title: {
+    default: siteConfig.name,
+    template: `%s | ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  keywords: ["개발 블로그", "개발 문서"],
+  authors: [
+    {
+      name: "nova",
+      url: "https://github.com/nova940116",
+    },
+  ],
+  creator: "nova",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "white" },
+    { media: "(prefers-color-scheme: dark)", color: "black" },
+  ],
+  openGraph: {
+    type: "website",
+    locale: "ko_KR",
+    url: siteConfig.url,
+    title: siteConfig.name,
+    description: siteConfig.description,
+    siteName: siteConfig.name,
+  },
+  manifest: `${siteConfig.url}/site.webmanifest`,
+}
+
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="ko">
+    <html lang="ko" suppressHydrationWarning>
+      <head />
       <body
-        className={`antialiased min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-50 ${NotoSansKR.className}`}
+        className={cn(
+          "min-h-screen bg-background font-sans antialiased",
+          fontSans.variable,
+          fontHeading.variable
+        )}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <div>
-            <header className="py-4 px-3">
-              <div className="flex items-center">
-                <nav className="space-x-6 mr-4">
-                  <Link className="flex items-center" href="/">
-                    <Logo className="w-[24px] h-[24px]" />
-                  </Link>
-                  {/* <Link href="/about">About</Link> */}
-                </nav>
-                <ModeToggle />
+          <div className="flex min-h-screen flex-col">
+            <header className="sticky top-0 z-40 w-full border-b bg-background">
+              <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
+                <MainNav items={docsConfig.mainNav}>
+                  <DocsSidebarNav items={docsConfig.sidebarNav} />
+                </MainNav>
+                <div className="flex flex-1 items-center space-x-4 sm:justify-end">
+                  {/* <div className="flex-1 sm:grow-0">
+                    <DocsSearch />
+                  </div> */}
+                  <nav className="flex items-center space-x-4">
+                    <Link
+                      href={siteConfig.links.github}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <Icons.gitHub className="h-5 w-5" />
+                      <span className="sr-only">GitHub</span>
+                    </Link>
+                    <ModeToggle />
+                  </nav>
+                </div>
               </div>
             </header>
-            <main className="grid grid-cols-1 sm:grid-cols-[1fr_minmax(48rem,_1fr)_1fr] lg:grid-cols-[1fr_minmax(48rem,_1fr)_1fr]">
-              <section></section>
-              <section className="flex justify-center">{children}</section>
-              <section></section>
-            </main>
-          </div>
-          <Analytics />
+            <div className="container flex-1">
+              {children}
+              <Analytics />
+              <Toaster />       
+            </div>
+            <SiteFooter className="border-t" />
+          </div>          
         </ThemeProvider>
       </body>
     </html>
