@@ -37,6 +37,7 @@ export const metadata = {
   },
   description: siteConfig.description,
   keywords: ["개발 블로그", "개발 문서"],
+  metadataBase: 'https://nova-log.vercel.app/',
   authors: [
     {
       name: "nova",
@@ -44,10 +45,6 @@ export const metadata = {
     },
   ],
   creator: "nova",
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "white" },
-    { media: "(prefers-color-scheme: dark)", color: "black" },
-  ],
   openGraph: {
     type: "website",
     locale: "ko_KR",
@@ -55,8 +52,7 @@ export const metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
     siteName: siteConfig.name,
-  },
-  manifest: `${siteConfig.url}/site.webmanifest`,
+  }
 }
 
 export default function RootLayout({ children }: RootLayoutProps) {
