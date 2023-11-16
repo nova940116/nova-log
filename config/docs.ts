@@ -3,10 +3,6 @@ import { DocsConfig } from "types"
 export const docsConfig: DocsConfig = {
   mainNav: [
     {
-      title: "포스트",
-      href: "/"
-    },
-    {
       title: "문서",
       href: "/docs",
     }

@@ -1,4 +1,4 @@
-import { Inter as FontSans } from "next/font/google"
+import { Inter, Noto_Sans_KR } from "next/font/google"
 import localFont from "next/font/local"
 
 import "@/styles/globals.css"
@@ -15,9 +15,15 @@ import { DocsSidebarNav } from "@/components/sidebar-nav"
 import { SiteFooter } from "@/components/site-footer"
 import Link from "next/link"
 
-const fontSans = FontSans({
+const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
+})
+
+const notoSansKR = Noto_Sans_KR({
+  subsets: ["latin"],
+  weight: ["900"],
+  variable: "--noto-sans"
 })
 
 // Font files can be colocated inside of `pages`
@@ -61,9 +67,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <head />
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable,
-          fontHeading.variable
+          "min-h-screen bg-background font-sans noto-sans antialiased",
+          inter.variable,
+          fontHeading.variable,
+          notoSansKR.variable
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
