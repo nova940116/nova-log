@@ -3,7 +3,13 @@ title: React
 description: React Tricks & Tips
 ---
 
-```js
+```jsx
+const sampleComponent = () => {
+  return isTrue && <p>True!</p> // return isTrue ? <p>True!</p> : null 대체
+}
+```
+조건부 렌더링
+```jsx
 const pages = 5
 
 {[...Array(pages)].map((_, i) =>
@@ -14,16 +20,16 @@ const pages = 5
 ```
 숫자 값을 배열로 렌더링 해야 할 때 `[...Array(number)]` Destructuring을 사용 할 수 있다.
 
-```tsx title="Parent.tsx"
+```jsx title="Parent.jsx"
 const Parent = () => {
   const receivedFromChild = (value) => {
-    console.log(value)
+    console.log(value) // hello
   }
-  return <Child callingParent={receivedFromChild}></Child>
+  return <Child callingParent={receivedFromChild} />
 }
 ```
 
-```tsx title="Child.tsx"
+```jsx title="Child.jsx"
 const Child = ({ callingParent }) => {
   callingParent("hello")
   return <div>Child</div>
