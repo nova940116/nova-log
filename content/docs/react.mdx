@@ -5,10 +5,20 @@ description: React Tricks & Tips
 
 ```jsx
 const sampleComponent = () => {
-  return isTrue && <p>True!</p> // return isTrue ? <p>True!</p> : null 대체
+  const basicCondition = flag && flag2 && !flag3
+  if (!basicCondition) return <p>Derp</p>
+  if (flag4) return <p>Blah</p>
+  if (flag5) return <p>Meh</p>
+  return <p>Herp</p>
 }
 ```
-조건부 렌더링
+복잡한 조건부 렌더링 처리 기법
+```jsx
+const sampleComponent = () => {
+  return isTrue && <p>True!</p> // isTrue ? <p>True!</p> : null 대체
+}
+```
+단순 조건부 렌더링
 ```jsx
 const pages = 5
 
