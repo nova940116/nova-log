@@ -149,9 +149,6 @@ dependencies:
   react-dom:
     specifier: ^18.2.0
     version: 18.2.0(react@18.2.0)
-  react-editor-js:
-    specifier: ^2.1.0
-    version: 2.1.0(@editorjs/editorjs@2.26.5)(@editorjs/paragraph@2.9.0)(react@18.2.0)
   react-hook-form:
     specifier: ^7.43.9
     version: 7.43.9(react@18.2.0)
@@ -452,14 +449,6 @@ packages:
       '@babel/helper-validator-identifier': 7.19.1
       to-fast-properties: 2.0.0
 
-  /@codexteam/icons@0.0.4:
-    resolution: {integrity: sha512-V8N/TY2TGyas4wLrPIFq7bcow68b3gu8DfDt1+rrHPtXxcexadKauRJL6eQgfG7Z0LCrN4boLRawR4S9gjIh/Q==}
-    dev: false
-
-  /@codexteam/icons@0.1.0:
-    resolution: {integrity: sha512-jW1fWnwtWzcP4FBGsaodbJY3s1ZaRU+IJy1pvJ7ygNQxkQinybJcwXoyt0a5mWwu/4w30A42EWhCrZn8lp4fdw==}
-    dev: false
-
   /@commitlint/cli@17.6.1:
     resolution: {integrity: sha512-kCnDD9LE2ySiTnj/VPaxy4/oRayRcdv4aCuVxtoum8SxIU7OADHc0nJPQfheE8bHcs3zZdWzDMWltRosuT13bg==}
     engines: {node: '>=v14'}
@@ -754,22 +743,6 @@ packages:
     engines: {node: '>=12'}
     dependencies:
       '@jridgewell/trace-mapping': 0.3.9
-
-  /@editorjs/editorjs@2.26.5:
-    resolution: {integrity: sha512-imwXZi9NmzxKjNosa1xQf286liJYsTe2J2DWCiV5TwKhvYZ1INg5Y+FietcM2v65QmeLqP7wgBUhoI7wiCB+yQ==}
-    dependencies:
-      '@codexteam/icons': 0.1.0
-      codex-notifier: 1.1.2
-      codex-tooltip: 1.0.5
-      html-janitor: 2.0.4
-      nanoid: 3.3.6
-    dev: false
-
-  /@editorjs/paragraph@2.9.0:
-    resolution: {integrity: sha512-lI6x1eiqFx2X3KmMak6gBlimFqXhG35fQpXMxzrjIphNLr4uPsXhVbyMPimPoLUnS9rM6Q00vptXmP2QNDd0zg==}
-    dependencies:
-      '@codexteam/icons': 0.0.4
-    dev: false
 
   /@effect-ts/core@0.60.5:
     resolution: {integrity: sha512-qi1WrtJA90XLMnj2hnUszW9Sx4dXP03ZJtCc5DiUBIOhF4Vw7plfb65/bdBySPoC9s7zy995TdUX1XBSxUkl5w==}
@@ -2531,42 +2504,6 @@ packages:
       '@babel/runtime': 7.21.0
     dev: false
 
-  /@react-editor-js/client@2.1.0(@editorjs/editorjs@2.26.5)(@editorjs/paragraph@2.9.0)(react@18.2.0):
-    resolution: {integrity: sha512-X/OwqY2KKUUVIy24zvubHTI4qhiVIWMxGlU/Bc6tkf9gcsWgQjPvn75DwrQ5SIGBOYpSBcHY01JX0RRtJHRumw==}
-    peerDependencies:
-      '@editorjs/editorjs': '*'
-      '@editorjs/paragraph': '*'
-      react: '*'
-    dependencies:
-      '@editorjs/editorjs': 2.26.5
-      '@editorjs/paragraph': 2.9.0
-      '@react-editor-js/core': 2.1.0(@editorjs/editorjs@2.26.5)(react@18.2.0)
-      react: 18.2.0
-    dev: false
-
-  /@react-editor-js/core@2.1.0(@editorjs/editorjs@2.26.5)(react@18.2.0):
-    resolution: {integrity: sha512-6h98D5g2RatdCDQRW/+N+eiMtjoq0n1n02m8oA7FrlEzEaOUyV+J+rmtmRS8OexLVOiNeWaSPDpVJ3MNiVLq8Q==}
-    peerDependencies:
-      '@editorjs/editorjs': '*'
-      react: '*'
-    dependencies:
-      '@editorjs/editorjs': 2.26.5
-      react: 18.2.0
-    dev: false
-
-  /@react-editor-js/server@2.1.0(@editorjs/editorjs@2.26.5)(@editorjs/paragraph@2.9.0)(react@18.2.0):
-    resolution: {integrity: sha512-RnTbCmzCHbjcjPNKhr9FaehItHgAZyd47Lq+iIGynFqWSsrwGy46LgOXSvb50DYbwDyT0GtxaXBIk6aiFki1Dg==}
-    peerDependencies:
-      '@editorjs/editorjs': '*'
-      '@editorjs/paragraph': '*'
-      react: '*'
-    dependencies:
-      '@editorjs/editorjs': 2.26.5
-      '@editorjs/paragraph': 2.9.0
-      '@react-editor-js/core': 2.1.0(@editorjs/editorjs@2.26.5)(react@18.2.0)
-      react: 18.2.0
-    dev: false
-
   /@resvg/resvg-wasm@2.0.0-alpha.4:
     resolution: {integrity: sha512-pWIG9a/x1ky8gXKRhPH1OPKpHFoMN1ISLbJ+O+gPXQHIAKhNd5I28RlWf7q576hAOQA9JZTlo3p/M2uyLzJmmw==}
     engines: {node: '>= 10'}
@@ -3232,14 +3169,6 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     transitivePeerDependencies:
       - '@types/react'
-    dev: false
-
-  /codex-notifier@1.1.2:
-    resolution: {integrity: sha512-DCp6xe/LGueJ1N5sXEwcBc3r3PyVkEEDNWCVigfvywAkeXcZMk9K41a31tkEFBW0Ptlwji6/JlAb49E3Yrxbtg==}
-    dev: false
-
-  /codex-tooltip@1.0.5:
-    resolution: {integrity: sha512-IuA8LeyLU5p1B+HyhOsqR6oxyFQ11k3i9e9aXw40CrHFTRO2Y1npNBVU3W1SvhKAbUU7R/YikUBdcYFP0RcJag==}
     dev: false
 
   /color-convert@1.9.3:
@@ -4639,10 +4568,6 @@ packages:
     dependencies:
       lru-cache: 6.0.0
     dev: true
-
-  /html-janitor@2.0.4:
-    resolution: {integrity: sha512-92J5h9jNZRk30PMHapjHEJfkrBWKCOy0bq3oW2pBungky6lzYSoboBGPMvxl1XRKB2q+kniQmsLsPbdpY7RM2g==}
-    dev: false
 
   /html-void-elements@2.0.1:
     resolution: {integrity: sha512-0quDb7s97CfemeJAnW9wC0hw78MtW7NU3hqtCD75g2vFlDLt36llsYD7uB7SUzojLMP24N5IatXf7ylGXiGG9A==}
@@ -6479,18 +6404,6 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
-    dev: false
-
-  /react-editor-js@2.1.0(@editorjs/editorjs@2.26.5)(@editorjs/paragraph@2.9.0)(react@18.2.0):
-    resolution: {integrity: sha512-unI9D2pTH/2gBenc6LgCXJm8iqnrzB71CHgfjQmaB+lGR0Njx+ZXydgUQm1VofMmvF6vcCNVDE1Eb47zQbm14g==}
-    dependencies:
-      '@react-editor-js/client': 2.1.0(@editorjs/editorjs@2.26.5)(@editorjs/paragraph@2.9.0)(react@18.2.0)
-      '@react-editor-js/core': 2.1.0(@editorjs/editorjs@2.26.5)(react@18.2.0)
-      '@react-editor-js/server': 2.1.0(@editorjs/editorjs@2.26.5)(@editorjs/paragraph@2.9.0)(react@18.2.0)
-    transitivePeerDependencies:
-      - '@editorjs/editorjs'
-      - '@editorjs/paragraph'
-      - react
     dev: false
 
   /react-hook-form@7.43.9(react@18.2.0):
