@@ -2,10 +2,51 @@
 title: HTML
 description: HTML Tips
 ---
+```html
+<ruby>노바로그<rt>노바의 개발 블로그</rt></ruby>
+```
+<ruby>노바로그<rt>노바의 개발 블로그</rt></ruby>
 
+해당문자의 설명을 윗 첨자로 표현
+```html
+<meter min="0" max="10" value="5">5</meter>
+```
+<meter min="0" max="10" value="5">5</meter>
+
+값을 게이지 형태로 표현
+
+```html
+<kbd>ALT</kbd>
+```
+<kbd>ALT</kbd>
+
+키보드 입력을 나타낼 때 사용
+```html
+<attr title="별걸 다 줄이네>별다줄</attr>
+```
+<attr title="별걸 다 줄이네>별다줄</attr>
+
+축약형 단어를 쓸 때 사용
 ```html
 <input type="email" id="email" />
 ```
-예제 : <input type="email" id="email" />  
+<input type="email" id="email" style="border: 1px solid #dbdbdb;" />
 
 type과 id를 email로 주면 chrome 기준 이메일 자동완성 기능이 동작한다
+
+```html
+<input type="text" autofocus />
+```
+autofocus 속성을 주면 페이지가 로드될 때 자동으로 포커스를 갖는다.
+
+```html
+<label for="name">닉네임 :</label>
+<input type="text" />
+```
+`<label>` 을 클릭하면, 연결된 `<input>` 에 입력할 수 있도록 포커스 되거나 토글 된다.   
+`<input>` 에 focus가 오면 스크린리더가 `<label>` 을 읽기 때문에 접근성 측면에서 중요하다.
+
+```html
+<button type="reset">버튼</button>
+```
+reset type은 form 안의 양식을 초기화 시켜준다
