@@ -15,14 +15,9 @@ import { DocsSidebarNav } from "@/components/sidebar-nav"
 import { SiteFooter } from "@/components/site-footer"
 import Link from "next/link"
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-sans",
-})
-
 const notoSansKR = Noto_Sans_KR({
   subsets: ["latin"],
-  weight: ["900"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   variable: "--noto-sans"
 })
 
@@ -43,7 +38,7 @@ export const metadata = {
   },
   description: siteConfig.description,
   keywords: ["개발 블로그", "개발 문서"],
-  metadataBase: 'https://nova-log.vercel.app/',
+  metadataBase: process.env.NEXT_PUBLIC_APP_URL,
   authors: [
     {
       name: "nova",
@@ -67,8 +62,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <head />
       <body
         className={cn(
-          "min-h-screen bg-background font-sans noto-sans antialiased",
-          inter.variable,
+          "min-h-screen bg-background font-noto antialiased",
           fontHeading.variable,
           notoSansKR.variable
         )}
