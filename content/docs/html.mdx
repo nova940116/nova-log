@@ -4,6 +4,86 @@ description: HTML Tips
 ---
 
 ```html
+<label for="movie">What is your favourite movie?</label>
+<input type="text" list="movie-options"/>
+
+<datalist id="movie-options">
+  <option value="Dune"/>
+  <option value="Dark waters"/>
+  <option value="The Artist"/>
+  <option value="The Avengers"/>
+  <option value="Iron Man"/>
+  <option value="Iron Man II"/>
+  <option value="Matrix"/>
+</datalist>
+```
+<label for="movie">What is your favourite movie?</label>
+<input type="text" list="movie-options"/>
+
+<datalist id="movie-options">
+  <option value="Dune"/>
+  <option value="Dark waters"/>
+  <option value="The Artist"/>
+  <option value="The Avengers"/>
+  <option value="Iron Man"/>
+  <option value="Iron Man II"/>
+  <option value="Matrix"/>
+</datalist>
+
+순수 html만으로 autocomplete 기능을 사용 할 수 있다.
+
+```html
+<input type="date" />
+<input type="week" />
+<input type="month" />
+<input type="time" />
+```
+<input type="date" />
+<input type="week" />
+<input type="month" />
+<input type="time" />
+
+input 태그의 type 설정 만으로도 날짜 데이터를 입력 받을 수 있다
+
+```html
+<details>
+	<summary>클릭 전 볼 수 있는 영역</summary>
+	<span>클릭 후에만 표시되는 영역</span>
+</details>
+```
+<details>
+	<summary>클릭 전 볼 수 있는 영역</summary>
+	<span>클릭 후에만 표시되는 영역</span>
+</details>
+
+아코디언 기능을 순수 html로 비슷하게 구현 할 수 있는 듯 하다.
+
+```html
+<select  name="cars" id="cars">
+  <optgroup label="Swedish Cars">
+    <option value="volvo">Volvo</option>
+    <option value="saab">Saab</option>
+  </optgroup>
+  <optgroup label="German Cars">
+    <option value="mercedes">Mercedes</option>
+    <option value="audi">Audi</option>
+  </optgroup>
+</select>
+```
+<select  name="cars" id="cars">
+  <optgroup label="Swedish Cars">
+    <option value="volvo">Volvo</option>
+    <option value="saab">Saab</option>
+  </optgroup>
+  <optgroup label="German Cars">
+    <option value="mercedes">Mercedes</option>
+    <option value="audi">Audi</option>
+  </optgroup>
+</select>
+
+`optgroup` 태그를 사용해 선택 옵션을 그룹으로 나눌 수 있다
+
+```html
 <dialog open>
   <p>Greetings, one and all!</p>
   <form method="dialog">
@@ -27,11 +107,16 @@ dialog를 쉽게 사용가능하다
 
 해당문자의 설명을 윗 첨자로 표현
 ```html
-<meter min="0" max="10" value="5" />
+<meter min="0" max="100" value="50" />
+<progress min="0" value="50" max="100" />
 ```
-<meter min="0" max="10" value="5" />
+<meter min="0" max="100" value="15" />
+<meter min="0" max="100" value="50" />
+<meter min="0" max="100" value="75" />
+<progress min="0" value="50" max="100" />
 
-값을 게이지 형태로 표현
+`meter` 와 `progress` 태그는 값을 게이지 형태로 표현한다   
+meter는 value에 따라 색상을 다르게 표현해준다
 
 ```html
 <kbd>ALT</kbd>
