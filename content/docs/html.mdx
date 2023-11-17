@@ -4,30 +4,18 @@ description: HTML Tips
 ---
 
 ```html
-<label for="movie">What is your favourite movie?</label>
-<input type="text" list="movie-options"/>
-
+<input type="text" list="movie-options" />
 <datalist id="movie-options">
-  <option value="Dune"/>
-  <option value="Dark waters"/>
-  <option value="The Artist"/>
-  <option value="The Avengers"/>
-  <option value="Iron Man"/>
-  <option value="Iron Man II"/>
-  <option value="Matrix"/>
+  <option value="30일"/>
+  <option value="범죄도시3"/>
+  <option value="엘리멘탈"/>
 </datalist>
 ```
-<label for="movie">What is your favourite movie?</label>
-<input type="text" list="movie-options"/>
-
+<input type="text" list="movie-options" class="border" />
 <datalist id="movie-options">
-  <option value="Dune"/>
-  <option value="Dark waters"/>
-  <option value="The Artist"/>
-  <option value="The Avengers"/>
-  <option value="Iron Man"/>
-  <option value="Iron Man II"/>
-  <option value="Matrix"/>
+  <option value="30일"/>
+  <option value="범죄도시3"/>
+  <option value="엘리멘탈"/>
 </datalist>
 
 순수 html만으로 autocomplete 기능을 사용 할 수 있다.
@@ -38,46 +26,46 @@ description: HTML Tips
 <input type="month" />
 <input type="time" />
 ```
-<input type="date" />
-<input type="week" />
-<input type="month" />
-<input type="time" />
+<input type="date" class="border" />
+<input type="week" class="border" />
+<input type="month" class="border" />
+<input type="time" class="border" />
 
 input 태그의 type 설정 만으로도 날짜 데이터를 입력 받을 수 있다
 
 ```html
 <details>
-	<summary>클릭 전 볼 수 있는 영역</summary>
-	<span>클릭 후에만 표시되는 영역</span>
+  <summary>클릭 전 볼 수 있는 영역</summary>
+  <span>클릭 후에만 표시되는 영역</span>
 </details>
 ```
 <details>
-	<summary>클릭 전 볼 수 있는 영역</summary>
-	<span>클릭 후에만 표시되는 영역</span>
+  <summary>클릭 전 볼 수 있는 영역</summary>
+  <span>클릭 후에만 표시되는 영역</span>
 </details>
 
 아코디언 기능을 순수 html로 비슷하게 구현 할 수 있는 듯 하다.
 
 ```html
-<select  name="cars" id="cars">
-  <optgroup label="Swedish Cars">
-    <option value="volvo">Volvo</option>
-    <option value="saab">Saab</option>
+<select name="cars" id="cars">
+  <optgroup label="현대차">
+    <option value="sonata">쏘나타</option>
+    <option value="avante">아반떼</option>
   </optgroup>
-  <optgroup label="German Cars">
-    <option value="mercedes">Mercedes</option>
-    <option value="audi">Audi</option>
+  <optgroup label="기아차">
+    <option value="k5">K5</option>
+    <option value="k3">K3</option>
   </optgroup>
 </select>
 ```
-<select  name="cars" id="cars">
-  <optgroup label="Swedish Cars">
-    <option value="volvo">Volvo</option>
-    <option value="saab">Saab</option>
+<select name="cars" id="cars" class="border">
+  <optgroup label="현대차">
+    <option value="sonata">쏘나타</option>
+    <option value="avante">아반떼</option>
   </optgroup>
-  <optgroup label="German Cars">
-    <option value="mercedes">Mercedes</option>
-    <option value="audi">Audi</option>
+  <optgroup label="기아차">
+    <option value="k5">K5</option>
+    <option value="k3">K3</option>
   </optgroup>
 </select>
 
@@ -85,16 +73,16 @@ input 태그의 type 설정 만으로도 날짜 데이터를 입력 받을 수 �
 
 ```html
 <dialog open>
-  <p>Greetings, one and all!</p>
+  <p>다이얼로그</p>
   <form method="dialog">
-    <button>OK</button>
+    <button>확인</button>
   </form>
 </dialog>
 ```
 <dialog open>
-  <p>Greetings, one and all!</p>
+  <p>다이얼로그</p>
   <form method="dialog">
-    <button>OK</button>
+    <button>확인</button>
   </form>
 </dialog>
 
@@ -108,15 +96,13 @@ dialog를 쉽게 사용가능하다
 해당문자의 설명을 윗 첨자로 표현
 ```html
 <meter min="0" max="100" value="50" />
-<progress min="0" value="50" max="100" />
+<progress min="0" max="100" value="50" />
 ```
-<meter min="0" max="100" value="15" />
-<meter min="0" max="100" value="50" />
-<meter min="0" max="100" value="75" />
-<progress min="0" value="50" max="100" />
+<meter min="0" max="100" value="55" />
+<br />
+<progress min="0" max="100" value="50" />
 
-`meter` 와 `progress` 태그는 값을 게이지 형태로 표현한다   
-meter는 value에 따라 색상을 다르게 표현해준다
+`meter` 와 `progress` 태그는 값을 게이지 형태로 표현한다
 
 ```html
 <kbd>ALT</kbd>
@@ -133,7 +119,7 @@ meter는 value에 따라 색상을 다르게 표현해준다
 ```html
 <input type="email" id="email" />
 ```
-<input type="email" id="email" style={{ border: '1px solid #dbdbdb' }} />
+<input type="email" id="email" class="border" />
 
 type과 id를 email로 주면 chrome 기준 이메일 자동완성 기능이 동작한다
 
@@ -147,7 +133,7 @@ autofocus 속성을 주면 페이지가 로드될 때 자동으로 포커스를 
 <input type="text" id="name" />
 ```
 <label for="name">닉네임 :</label>
-<input type="text" id="name" style={{ border: '1px solid #dbdbdb' }} />
+<input type="text" id="name" class="border" />
 
 id를주고 label for과 매칭시키면 label을 클릭했을 때에도 input에 포커싱된다 
 
