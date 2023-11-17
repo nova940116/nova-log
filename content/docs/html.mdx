@@ -55,14 +55,16 @@ type과 id를 email로 주면 chrome 기준 이메일 자동완성 기능이 동
 ```html
 <input type="text" autofocus />
 ```
-autofocus 속성을 주면 페이지가 로드될 때 자동으로 포커스를 갖는다.
+autofocus 속성을 주면 페이지가 로드될 때 자동으로 포커스를 갖는다
 
 ```html
 <label for="name">닉네임 :</label>
-<input type="text" />
+<input type="text" id="name" />
 ```
-`<label>` 을 클릭하면, 연결된 `<input>` 에 입력할 수 있도록 포커스 되거나 토글 된다.   
-`<input>` 에 focus가 오면 스크린리더가 `<label>` 을 읽기 때문에 접근성 측면에서 중요하다.
+<label for="name">닉네임 :</label>
+<input type="text" id="name" style={{ border: '1px solid #dbdbdb' }} />
+
+id를주고 label for과 매칭시키면 label을 클릭했을 때에도 input에 포커싱된다 
 
 ```html
 <button type="reset">버튼</button>
