@@ -1,16 +1,22 @@
 ---
-title: Vercel/og를 이용해 초간단 썸네일 생성기 만들기
-description: 오픈그래프 이미지 생성을 돕는 라이브러리인 vercel/og를 응용해 썸네일 생성 서비스를 만들어보자
+title: @vercel/og를 이용해 초간단 썸네일 생성기 만들기(with Next.js)
+description: 오픈그래프 이미지 생성을 지원하는 @vercel/og를 응용해 썸네일 생성 서비스를 만들어보자
 image: /images/blog/blog-post-3.jpg
 date: "2023-11-15"
-authors: 노바
 ---
 
-<Callout>
-  The text below is from the [Tailwind
-  CSS](https://play.tailwindcss.com/uj1vGACRJA?layout=preview) docs. I copied it
-  here to test the markdown styles. **Tailwind is awesome. You should use it.**
-</Callout>
+Vercel에서 제공하는 오픈그래프 생성 라이브러리인 @vercel/og 라는게 있습니다. 블로그를 포스팅 할 때 og image를 자동으로 생성하는 용도로 주로 쓰이는 것 같습니다만
+이를 응용하면 썸네일 생성 서비스를 쉽게 만들 수 있습니다.
+
+## 결과물 미리보기
+[https://thumbnail-maker.vercel.app/](https://thumbnail-maker.vercel.app)   
+썸네일을 생성하고 png 파일로 다운로드 받을 수 있습니다.
+
+## 서비스 컨셉
+
+제가 세운 계획은 아주 단순합니다. 메인 페이지에 진입하면, default로 정의된 값들로 썸네일을 생성하고, 이를 preview로 보여줍니다.
+사용자는 원하는 제목, 이름, 색상, 비율 등을 선택하고, 각각의 이벤트마다 변경된 내용을 preview에 반영합니다.
+썸네일을 완성한후에 다운로드 버튼을 클릭해 썸네일을 다운로드 받습니다.
 
 Until now, trying to style an article, document, or blog post with Tailwind has been a tedious task that required a keen eye for typography and a lot of complex custom CSS.
 
