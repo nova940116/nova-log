@@ -75,15 +75,15 @@ export default async function PostPage({ params }: PostPageProps) {
             {formatDate(post.date)}
           </time>
         )}
-        <h1 className="mt-2 inline-block font-heading text-4xl leading-tight lg:text-5xl">
+        <h1 className="mt-2 inline-block font-bold text-4xl leading-normal">
           {post.title}
         </h1>
 
         <div className="mt-4 flex space-x-4">
-          <Image src="/images/avatartion.png" alt="아바타" width={42} height={42} className="rounded-full bg-white" />
-          <div className="flex-1 text-left leading-tight">
+          <Image src="/images/avatartion.png" alt="아바타" width={42} height={42} className="rounded-full bg-white border" />
+          <div className="flex-1 text-left leading-normal">
             <p className="font-medium">윤정현(노바)</p>
-            <p className="text-[12px] text-muted-foreground">프리랜서</p>
+            <p className="text-[12px] text-muted-foreground">프리랜서 개발자</p>
           </div>
         </div>
       </div>

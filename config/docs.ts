@@ -16,6 +16,10 @@ export const docsConfig: DocsConfig = {
           href: "/docs/javascript",
         },
         {
+          title: "Typescript",
+          href: "/docs/typescript",
+        },
+        {
           title: "HTML",
           href: "/docs/html",
         },
