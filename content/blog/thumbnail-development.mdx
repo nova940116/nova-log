@@ -5,7 +5,7 @@ image: /images/blog/blog-post-3.jpg
 date: "2023-11-15"
 ---
 
-Vercel에서 제공하는 오픈그래프 생성 라이브러리인 @vercel/og 라는게 있습니다. 블로그를 포스팅 할 때 og image를 자동으로 생성하는 용도로 주로 쓰이는 것 같습니다만
+Vercel에서 제공하는 오픈그래프 생성 라이브러리인 `@vercel/og` 라는게 있습니다. 블로그를 포스팅 할 때 og image를 자동으로 생성하는 용도로 주로 쓰이는 것 같습니다만
 이를 응용하면 썸네일 생성 서비스를 쉽게 만들 수 있습니다.
 
 ## 결과물 미리보기
@@ -18,11 +18,125 @@ Vercel에서 제공하는 오픈그래프 생성 라이브러리인 @vercel/og �
 사용자는 원하는 제목, 이름, 색상, 비율 등을 선택하고, 각각의 이벤트마다 변경된 내용을 preview에 반영합니다.
 썸네일을 완성한후에 다운로드 버튼을 클릭해 썸네일을 다운로드 받습니다.
 
-Until now, trying to style an article, document, or blog post with Tailwind has been a tedious task that required a keen eye for typography and a lot of complex custom CSS.
+여기 mp4
 
-By default, Tailwind removes all of the default browser styling from paragraphs, headings, lists and more. This ends up being really useful for building application UIs because you spend less time undoing user-agent styles, but when you _really are_ just trying to style some content that came from a rich-text editor in a CMS or a markdown file, it can be surprising and unintuitive.
+```tsx app/page.tsx
+"use client"
+import { useEffect, useRef, useState } from 'react'
+import { useDebounce } from "@/hooks/useDebounce"
+import Image from 'next/image'
+import Link from 'next/link'
 
-We get lots of complaints about it actually, with people regularly asking us things like:
+export default function Home() {
+  const [width, setWidth] = useState<number>(600)
+  const [height, setHeight] = useState<number>(300)
+  const [title, setTitle] = useState<string>("쉽고 편하게.             썸네일 만들기 😀")
+  const [name, setName] = useState<string>("@썸네일메이커")
+  const [ratio, setRatio] = useState<string>("4:3")
+  const [backgroundColor, setBackgroundColor] = useState<string>("#427BFF")
+  const [textColor, setTextColor] = useState<string>("#000")
+  const [imageSrc, setImageSrc] = useState<string>("")
+  const backgroundColorRef = useRef<HTMLInputElement>(null)
+  const colorRef = useRef<HTMLInputElement>(null)
+  const debouncedTitleTerm: string = useDebounce<string>(title, 300)
+  const debouncedNameTerm: string = useDebounce<string>(name, 300)  
+
+  const loadImage = async () => {
+    setWidth(width)
+    setHeight(height)
+    const data = await fetch(`/og?ratio=${ratio}&title=${title}&name=${name}&backgroundColor=${backgroundColor.replace('#', '')}
+      &textColor=${textColor.replace('#', '')}`)
+    const file = await data.blob()  
+    setImageSrc(URL.createObjectURL(file))
+  }
+
+  const downloadThumbnail = async() => {
+    const data = await fetch(`/og?ratio=${ratio}&title=${title}&name=${name}&backgroundColor=${backgroundColor.replace('#', '')}
+      &textColor=${textColor.replace('#', '')}`)
+    const file = await data.blob()
+    const url = URL.createObjectURL(file)
+    const a = document.createElement("a")
+    a.setAttribute("download", 'thumbnail.png')
+    a.setAttribute("href", url)
+    document.body.appendChild(a)
+    a.click()
+    document.body.removeChild(a)
+  }
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => { loadImage() }, [backgroundColor, textColor, ratio, debouncedTitleTerm, debouncedNameTerm])
+
+  return (
+    <main className="m-auto min-h-screen max-w-[50rem] flex flex-col">
+      <section>
+        <div className='border-x-2 border-b-2 border-black flex justify-center bg-black h-[300px]'>
+          { imageSrc ? 
+          <Image className='max-w-full max-h-full object-contain' src={imageSrc} alt="thumbnail" width={width} height={height} /> 
+          : null }     
+        </div>
+        <table className='w-full'>
+          <thead></thead>
+          <tbody>
+            <tr className='border-b-2 border-x-2 border-black h-[70px]'>
+              <td className='w-1/4 border-r-2 border-black text-center font-bold text-lg'>비율</td>
+              <td className={`${ratio === '4:3' ? 'bg-pink-300 text-white' : '' } w-1/4 border-r-2 border-black text-center cursor-pointer`} onClick={() => setRatio('4:3')}>
+                4:3
+              </td>
+              <td className={`${ratio === '2:1' ? 'bg-pink-300 text-white' : '' } w-1/4 border-r-2 border-black text-center cursor-pointer`} onClick={() => setRatio('2:1')}>
+                2:1
+              </td>
+              <td className={`${ratio === '1:1' ? 'bg-pink-300 text-white' : '' } w-1/4 border-r-2 border-black text-center cursor-pointer`} onClick={() => setRatio('1:1')}>
+                1:1
+              </td>
+            </tr>
+            <tr className='border-b-2 border-x-2 border-black h-[70px]'>
+              <td className='w-1/4 border-r-2 border-black text-center font-bold text-lg'>제목</td>
+              <td className='border-r-2 border-black text-center' colSpan={3}>
+                <input className='w-full h-[70px] px-4 outline-none' value={title} onChange={(event) => setTitle(event.target.value)} />
+              </td>
+            </tr>
+            <tr className='border-b-2 border-x-2 border-black h-[70px]'>
+              <td className='w-1/4 border-r-2 border-black text-center font-bold text-lg'>이름</td>
+              <td className='border-r-2 border-black text-center' colSpan={3}>
+                <input className='w-full h-[70px] px-4 outline-none' value={name} onChange={(event) => setName(event.target.value)} />
+              </td>
+            </tr>
+            <tr className='border-b-2 border-x-2 border-black h-[70px]'>
+              <td className='w-1/4 border-r-2 border-black text-center font-bold text-lg'>배경색</td>
+              <td className='border-r-2 border-black text-center' style={{ backgroundColor: `${backgroundColor}` }}>
+                <div className={`w-full h-[70px] bg-[${backgroundColor}]`} onClick={() => backgroundColorRef.current?.click()}></div>
+                <input type="color" className='h-0 w-0 absolute' value={backgroundColor} onChange={(event) => setBackgroundColor(event.target.value)} ref={backgroundColorRef} />
+              </td>
+              <td className='w-1/4 border-r-2 border-black text-center font-bold text-lg'>글자색</td>
+              <td className='border-r-2 border-black text-center' style={{ backgroundColor: `${textColor}` }}>
+                <div className={`w-full h-[70px] bg-[${textColor}]`} onClick={() => colorRef.current?.click()}></div>
+                <input type="color" className='h-0 w-0 absolute' value={textColor} onChange={(event) => setTextColor(event.target.value)} ref={colorRef} />
+              </td>
+            </tr>
+            <tr className='border-b-2 border-x-2 border-black h-[75px]'>
+              <td 
+                className='text-center font-black bg-orange-300 text-white text-xl cursor-pointer hover:bg-gray-400' 
+                style={{ WebkitTextStroke: '1px black' }}
+                colSpan={4} 
+                onClick={downloadThumbnail}>이미지 다운로드(PNG)</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  )
+}
+```
+썸네일의 비율, 제목, 이름, 색상등을 입력받고 변경 될 때
+
+
+
+`@vercel/og`는 Next.js 13의 새 기능인 App Router를 사용한다면 따로 설치하지 않아도 사용이 가능합니다.
+
+```tsx app/og/route.tsx
+
+```
+
 
 > Why is Tailwind removing the default styles on my `h1` elements? How do I disable this? What do you mean I lose all the other base styles too?
 > We hear you, but we're not convinced that simply disabling our base styles is what you really want. You don't want to have to remove annoying margins every time you use a `p` element in a piece of your dashboard UI. And I doubt you really want your blog posts to use the user-agent styles either — you want them to look _awesome_, not awful.
