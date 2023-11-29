@@ -22,14 +22,17 @@ export default function RootLayout({
       <body className={notoSansKR.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="max-w-2xl mx-auto py-10 px-4">
-            <header className="flex py-5">
-              <Link href="/">
-                <h1>노바로그</h1>
-              </Link>
-              <nav className="ml-5">
-                <Link href="" className="px-2">소개</Link>
-                <Link href="" className="px-2">문서</Link>
-              </nav>
+            <header className="flex justify-between py-5">
+              <div className="flex">
+                <Link href="/">
+                  <h1>노바로그</h1>
+                </Link>
+                <nav className="ml-5">
+                  <Link href="" className="px-2">소개</Link>
+                  <Link href="" className="px-2">문서</Link>
+                </nav>
+              </div>
+              <ModeToggle />
             </header>
             {children}
           </div>

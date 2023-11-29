@@ -8,8 +8,9 @@ export default async function Home() {
       {posts.map((post) => 
         <Link href={`/post/${post?.slug}`} key={post?.slug}>
           <article>
-            <h2>{post?.title}</h2>
-            <p>{post?.description}</p>
+            <h2 className="font-bold text-xl">{post?.title}</h2>
+            <p className="py-3">{post?.description}</p>
+            <p>{post?.date}</p>
           </article>  
         </Link>
       )}
