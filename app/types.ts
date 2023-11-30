@@ -1,6 +1,6 @@
 export type Post = {
   slug: string
-  body: string
+  body: any
   title: string
   description: string
   date: string

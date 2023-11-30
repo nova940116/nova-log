@@ -2,7 +2,6 @@ import { MDXRemote } from 'next-mdx-remote/rsc'
 import { getPost } from '@/app/utils'
 import { notFound } from 'next/navigation' 
 import { Code } from "bright"
-import { Fira_Mono } from 'next/font/google'
 
 type Params = {
   params: {
@@ -10,15 +9,13 @@ type Params = {
   }
 }
 
-const firaMono = Fira_Mono({ subsets: ['latin'], weight: ["400"] })
-
 export default async function Post(params: Params) {
   // MDX text - can be from a local file, database, CMS, fetch, anywhere...
   const post = await getPost(params.params.slug)
   if (!post) return notFound()
   const components = {
     pre: (props: any) => (
-      <Code {...props} className={`text-sm`}>
+      <Code {...props}>
         {props.children}
       </Code>
     )
