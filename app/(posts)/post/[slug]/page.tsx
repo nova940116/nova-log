@@ -17,7 +17,7 @@ export async function generateStaticParams() {
   }))
 }
 
-export default async function Post({ params }: any) {
+export default async function Post({ params }: Params) {
   // MDX text - can be from a local file, database, CMS, fetch, anywhere...
   const post = await getPost(params.slug)
   if (!post) return notFound()
@@ -30,7 +30,7 @@ export default async function Post({ params }: any) {
   }
   return (
     <main>
-      <h1 className='text-2xl'>{post.title}</h1>
+      <h1 className='text-2xl font-bold'>{post.title}</h1>
       <p className='py-2'>{post.date}</p>
       <MDXRemote source={post.body} components={components} />
     </main>
