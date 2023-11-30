@@ -18,7 +18,6 @@ export async function generateStaticParams() {
 }
 
 export default async function Post({ params }: Params) {
-  // MDX text - can be from a local file, database, CMS, fetch, anywhere...
   const post = await getPost(params.slug)
   if (!post) return notFound()
   const components = {
