@@ -1,6 +1,6 @@
 import matter from 'gray-matter'
 import path from 'path'
-import type { Post } from './types'
+import type { Post, Doc } from './types'
 import fs from 'fs/promises'
 import { cache } from 'react'
 
@@ -32,5 +32,26 @@ export async function getPost(slug: string) {
   const posts = await getPosts()
   return posts.find((post) => post?.slug === slug)
 }
+
+export const getDocs = cache(async () => {
+  const docs = await fs.readdir('./app/contents/docs/')
+  
+  return Promise.all(
+    docs
+      .filter((file) => path.extname(file) === '.mdx')
+      .map(async (file) => {
+        const filePath = `./app/contents/docs/${file}`
+        const docContent = await fs.readFile(filePath, 'utf8')
+        
+        const { data, content } = matter(docContent)
+
+        // if (data.published === false) {
+        //   return null
+        // }
+
+        return { ...data, body: content } as Doc
+      })
+  )
+})
 
 export default getPosts

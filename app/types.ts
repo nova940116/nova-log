@@ -5,3 +5,9 @@ export type Post = {
   description: string
   date: string
 }
+
+export type Doc = {
+  slug: string
+  body: string
+  title: string
+}
