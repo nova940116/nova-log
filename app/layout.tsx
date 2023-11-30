@@ -33,7 +33,7 @@ export default function RootLayout({
               </Link>
               <nav className="ml-5">
                 <Link href="" className="px-2">소개</Link>
-                <Link href="/docs" className="px-2">문서</Link>
+                <Link href="/doc" className="px-2">문서</Link>
               </nav>
             </div>
             <ModeToggle />

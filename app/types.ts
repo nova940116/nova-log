@@ -10,4 +10,5 @@ export type Doc = {
   slug: string
   body: string
   title: string
+  description: string  
 }

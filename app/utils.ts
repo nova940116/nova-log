@@ -54,4 +54,9 @@ export const getDocs = cache(async () => {
   )
 })
 
+export async function getDoc(slug: string) {
+  const docs = await getDocs()
+  return docs.find((doc) => doc?.slug === slug)
+}
+
 export default getPosts
