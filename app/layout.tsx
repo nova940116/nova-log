@@ -5,7 +5,7 @@ import { ModeToggle } from "@/app/components/mode-toggle"
 import './globals.css'
 import Link from 'next/link'
 
-const notoSansKR = Noto_Sans_KR({ subsets: ['latin'] })
+const notoSansKR = Noto_Sans_KR({ subsets: ['latin'], weight: ["400"] })
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={notoSansKR.className}>
-        {/* <ThemeProvider attribute="class" defaultTheme="system" enableSystem> */}
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="max-w-2xl mx-auto py-10 px-4">
             <header className="flex justify-between py-5">
               <div className="flex">
@@ -32,11 +32,11 @@ export default function RootLayout({
                   <Link href="" className="px-2">문서</Link>
                 </nav>
               </div>
-              {/* <ModeToggle /> */}
+              <ModeToggle />
             </header>
             {children}
           </div>
-        {/* </ThemeProvider> */}
+        </ThemeProvider>
       </body>
     </html>
   )

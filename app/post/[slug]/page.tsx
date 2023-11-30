@@ -24,7 +24,7 @@ export default async function Post(params: Params) {
     <main>
       <h1 className='text-2xl'>{post.title}</h1>
       <p className='py-2'>{post.date}</p>
-      <MDXRemote source={post.body} components={components} />
+      {/* <MDXRemote source={post.body} components={components} /> */}
     </main>
   )
 }
