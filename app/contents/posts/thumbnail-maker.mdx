@@ -5,47 +5,37 @@ date: "2023년 11월 30일"
 slug: thumbnail-maker
 ---
 
-Vercel에서 제공하는 오픈그래프 생성 라이브러리인 `@vercel/og` 라는게 있습니다. 블로그를 포스팅 할 때 og image를 자동으로 생성하는 용도로 주로 쓰이는 것 같습니다만
-이를 응용하면 썸네일 생성 서비스를 쉽게 만들 수 있습니다.
+vercel에서 제공하는 이미지 생성라이브러리인 `@vercel/og` 라는게 있습니다. 동적인 오픈그래프 이미지 생성이 주 목적인듯 합니다.   
+이를 응용해서 썸네일생성 서비스를 만들어 볼 수 있습니다.
 
 `@vercel/og`는 Next.js 13의 App Router를 사용한다면 따로 설치하지 않아도 사용이 가능합니다.
 
-```app/page.tsx
-const loadImage = async () => {
-  setWidth(width)
-  setHeight(height)
-  const data = await fetch(`/og?ratio=${ratio}&title=${title}&name=${name}&backgroundColor=${backgroundColor.replace('#', '')}
-    &textColor=${textColor.replace('#', '')}`)
-  const file = await data.blob()  
-  setImageSrc(URL.createObjectURL(file))
+```app/page.tsx lineNumbers
+const [title, setTitle] = useState<string>("썸네일메이커")
+const [imageUrl, setImageUrl] = useState<string>("")
+
+const getImage = async () => {
+  const data = await fetch(`/og?title={title}`)
+  const file = await data.blob()
+  setImageUrl(URL.createObjectURL(file))
 }
 ```
 
 ```app/api/og/route.ts
-import { ImageResponse } from 'next/server'
+import { ImageResponse } from 'next/og'
  
 export const runtime = 'edge'
-
+ 
+export async function GET() {
   return new ImageResponse(
     (
-      <div>
-        <div>
-          <span>{name}</span>
-        </div>        
-        <h1 style={{ whiteSpace: 'pre-wrap', padding: '40px' }}>{title}</h1>
-      </div>
+      <div style={{ ... }}>{title}</div>
     ),
     {
-      width: width,
-      height: height,
-      fonts: [
-        {
-          name: 'SpoqaHanSansNeo',
-          data: fontData,
-          style: 'normal',
-        },
-      ],      
-    },
+      width: 1200,
+      height: 600,
+    }
   )
+}
 ```
 
