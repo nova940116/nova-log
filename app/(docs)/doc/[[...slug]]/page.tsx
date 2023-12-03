@@ -18,7 +18,8 @@ export async function generateStaticParams() {
 }
 
 export default async function Doc({ params }: Params) {
-  const slug = params.slug && params.slug.length ? params.slug[0] : 'index'
+  // const slug = params.slug && params.slug.length ? params.slug[0] : 'index'
+  const slug = 'index'
   const doc = await getDoc(slug)
   if (!doc) return notFound()
   const components = {
