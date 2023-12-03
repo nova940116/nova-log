@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Noto_Sans_KR, Inter } from 'next/font/google'
-import { ThemeProvider } from "@/app/components/theme-provider"
-import { ModeToggle } from "@/app/components/mode-toggle"
+import { ThemeProvider } from "@/components/theme-provider"
+import { ModeToggle } from "@/components/mode-toggle"
 import './globals.css'
 import Link from 'next/link'
 
