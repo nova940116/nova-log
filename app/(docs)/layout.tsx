@@ -15,22 +15,21 @@ export async function generateStaticParams() {
 
 export default async function DocsLayout({ children }: DocsLayoutProps) {
   const docs = await getDocs()
-  console.log(docs, '@?')
   return (
-    <main className="flex">
+    <main className="flex flex-wrap">
       <section>
-        <nav className="flex flex-col">
+        <nav className="flex flex-col px-10 py-16 w-[200px]">
         {docs.map((doc) => 
           <>
-            <Link href={`/doc/${doc.slug}`}>{doc.title}</Link>
+            {doc.slug !== 'index' && <Link className="py-2" href={`/doc/${doc.slug}`}>{doc.title}</Link>}
           </>
         )}
         </nav>
       </section>
-      <section className="max-w-2xl mx-auto px-4 py-10">
+      <section className="mx-auto max-w-2xl min-w-[768px] px-4 py-10">
         { children }
       </section>
-      <section></section>
+      <section className="w-[200px]"></section>
     </main>
   )
 }
