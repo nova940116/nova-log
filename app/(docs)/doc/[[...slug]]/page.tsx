@@ -9,17 +9,17 @@ type Params = {
   }
 }
 
-// export async function generateStaticParams() {
-//   const docs = await getDocs()
+export async function generateStaticParams() {
+  const docs = await getDocs()
 
-//   return docs.map((doc) => ({
-//     params: { slug: doc.slug }
-//   }))
-// }
+  return docs.map((doc) => ({
+    params: { slug: doc.slug }
+  }))
+}
 
 export default async function Doc({ params }: Params) {
-  // const slug = params.slug && params.slug.length ? params.slug[0] : 'index'
-  const doc = await getDoc('index')
+  const slug = params.slug && params.slug.length ? params.slug[0] : 'index'
+  const doc = await getDoc(slug)
   if (!doc) return notFound()
   const components = {
     pre: (props: any) => (
