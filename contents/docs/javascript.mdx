@@ -28,23 +28,21 @@ byteSize('Hello World') // 11
 바이트 크기
 
 ```js
+// 단순배열 평균
 const average = (...nums) => nums.reduce((acc, val) => acc + val, 0) / nums.length
 average(1, 2, 3) // 2
-```
-단순배열 평균
-
-```js
+// 객체배열 평균
 const averageBy = (arr, fn) => arr.map(typeof fn === 'function' ? fn : val => val[fn]).reduce((acc, val) => acc + val, 0) / arr.length
 averageBy([{ n: 4 }, { n: 2 }, { n: 8 }, { n: 6 }], 'n') // 5
 ```
-객체배열 평균
+배열 평균
 
 ```js
 [4, 2, 3].every(x => x > 1)
 ```
 배열 조건 체크
 
-```js {3} /appDir: true/
+```js
 const auth = { user: '' }
 console.log(!!auth.user) // false
 ```
