@@ -1,6 +1,6 @@
 import matter from 'gray-matter'
 import path from 'path'
-import type { Post, Doc } from './types'
+import type { Post, Doc } from '@/app/types'
 import fs from 'fs/promises'
 import { cache } from 'react'
 

@@ -29,8 +29,8 @@ export default async function Doc({ params }: Params) {
   }
   return (
     <main>
-      <h1 className='text-2xl font-bold'>{doc.title}</h1>
-      <p className='py-2'>{doc.description}</p>
+      <h1 className='text-5xl font-extrabold'>{doc.title}</h1>
+      <p className='text-xl py-2'>{doc.description}</p>
       <MDXRemote source={doc.body} components={components} />
     </main>
   )

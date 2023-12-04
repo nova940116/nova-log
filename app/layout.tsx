@@ -26,7 +26,7 @@ export default function RootLayout({
     <html lang="ko" className={`${notoSansKR.variable} ${inter.variable}`}>
       <body>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <header className="flex justify-between py-5 max-w-2xl mx-auto px-4">
+          <header className="flex justify-between py-5 max-w-4xl mx-auto px-4">
             <div className="flex">
               <Link href="/">
                 <h1>노바로그</h1>

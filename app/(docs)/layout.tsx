@@ -1,5 +1,5 @@
-import Link from "next/link"
 import { getDocs } from "@/app/utils"
+import DocSidebarNav from "@/components/doc-sidebar-nav"
 
 type DocsLayoutProps = {
   children: React.ReactNode
@@ -16,20 +16,14 @@ export async function generateStaticParams() {
 export default async function DocsLayout({ children }: DocsLayoutProps) {
   const docs = await getDocs()
   return (
-    <main className="flex flex-wrap">
+    <main className="mx-auto max-w-4xl px-4 py-5 flex flex-wrap">
       <section>
-        <nav className="flex flex-col px-10 py-16 w-[200px]">
-        {docs.map((doc) => 
-          <>
-            {doc.slug !== 'index' && <Link className="py-2" href={`/doc/${doc.slug}`}>{doc.title}</Link>}
-          </>
-        )}
-        </nav>
+        <DocSidebarNav docs={docs} />
       </section>
-      <section className="mx-auto max-w-2xl min-w-[768px] px-4 py-10">
+      <section className="px-4 py-5 w-full max-w-2xl">
         { children }
       </section>
-      <section className="w-[200px]"></section>
+      {/* <section className=""></section> */}
     </main>
   )
 }

@@ -14,12 +14,15 @@
     "@next/mdx": "^14.0.3",
     "@types/mdx": "^2.0.10",
     "bright": "^0.8.4",
+    "clsx": "^2.0.0",
     "gray-matter": "^4.0.3",
     "next": "14.0.3",
     "next-mdx-remote": "^4.4.1",
     "next-themes": "^0.2.1",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "remark-gfm": "^4.0.0",
+    "tailwind-merge": "^2.1.0"
   },
   "devDependencies": {
     "@types/node": "^20",
