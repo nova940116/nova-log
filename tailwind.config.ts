@@ -10,6 +10,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         firamono: ['var(--font-firamono)'],
+        sans: ['var(--font-sans)']
       },      
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

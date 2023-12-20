@@ -1,5 +1,5 @@
 export default function MdxLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className='mt-11 px-4'>{children}</div>
+    <div className='my-11 px-4 font-sans'>{children}</div>
   )
 }

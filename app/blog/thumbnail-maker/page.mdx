@@ -1,6 +1,5 @@
 import BlogTitle from "@/components/blog-title"
 import BlogDate from "@/components/blog-date"
-import InformationAside from "@/components/Information-aside"
 
 <BlogTitle>Next.js로 썸네일 생성 기능 쉽게 만들기</BlogTitle>
 <BlogDate>2023년 12월 20일</BlogDate>
@@ -57,6 +56,6 @@ export async function GET() {
 클라이언트단에서 넘겨준 querystring 값을 받아서 이미지의 제목, 내용등으로 구성합니다. HTML + CSS 조합으로 스타일링을 할 수 있습니다. 예시는 간단하게 동작원리만을 설명했지만,
 이를 응용하여 그럴듯한 서비스를 만들 수 있습니다.
 
-예시 확인하기: https://thumbnail-maker.vercel.app
-
 <Image className="border my-5" src="/thumbnail-maker.png" alt="썸네일메이커" width={1600} height={900} />
+
+> 예시 확인하기: https://thumbnail-maker.vercel.app

@@ -21,3 +21,10 @@ h2 {
 a {
   text-decoration: underline;
 }
+
+blockquote {
+  margin-top: 15px;
+  padding: 15px;
+  background-color: #ceffe7;
+  border-radius: 5px;
+}
