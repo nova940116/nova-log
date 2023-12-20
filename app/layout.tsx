@@ -1,16 +1,8 @@
 import type { Metadata } from 'next'
-import { Noto_Sans_KR, Inter } from 'next/font/google'
-import { ThemeProvider } from "@/components/theme-provider"
-import { ModeToggle } from "@/components/mode-toggle"
+import { Inter } from 'next/font/google'
 import './globals.css'
-import Link from 'next/link'
 
-const notoSansKR = Noto_Sans_KR({ subsets: ['latin'], display: 'swap', variable: '--font-noto-sans' })
-const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-inter',
-})
+const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -23,24 +15,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="ko" className={`${notoSansKR.variable} ${inter.variable}`}>
-      <body>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <header className="flex justify-between py-5 max-w-4xl mx-auto px-4">
-            <div className="flex">
-              <Link href="/">
-                <h1>노바로그</h1>
-              </Link>
-              <nav className="ml-5">
-                <Link href="" className="px-2">소개</Link>
-                <Link href="/doc/index" className="px-2">문서</Link>
-              </nav>
-            </div>
-            <ModeToggle />
-          </header>          
-          {children}
-        </ThemeProvider>
-      </body>
+    <html lang="en">
+      <body className={inter.className}>{children}</body>
     </html>
   )
 }
