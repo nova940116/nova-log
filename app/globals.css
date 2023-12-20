@@ -11,3 +11,13 @@ p > code {
   border-radius: 5px;
   padding: 3.5px;
 }
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding-top: 10px;
+}
+
+a {
+  text-decoration: underline;
+}
