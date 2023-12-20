@@ -7,7 +7,7 @@ export default function Home() {
       {
         articles.map((article) => 
           <article key={article.title} className="px-4">
-            <Link href={`/blog/${article.slug}`}>
+            <Link className="no-underline" href={`/blog/${article.slug}`}>
               <h2 className="text-2xl font-bold mb-5">{article.title}</h2>
               <p className="mb-5">{article.description}</p>
               <time>{article.date}</time>
