@@ -15,7 +15,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="ko">
       <body className={inter.className}>
         <main className='max-w-4xl m-auto'>
-          <header className="py-5 px-4 bg-gray-600 w-full">
+          <header className="py-5 px-4 w-full border-b-2">
             <h1>
               <Link href="/">노바로그</Link>
             </h1>
