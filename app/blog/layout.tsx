@@ -1,6 +1,8 @@
 import { headers } from "next/headers"
 import { getPostFrontmatter } from "@/mdx-read"
 
+export const revalidate = 3600
+
 export default async function MdxLayout({ children }: { children: React.ReactNode }) {
   const _headers = headers()
   const currentUrl = _headers.get("x-url")
