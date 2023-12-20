@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Fira_Mono } from 'next/font/google'
 import './globals.css'
 import Link from 'next/link'
 
-const inter = Inter({ subsets: ['latin'] })
+const firaMono = Fira_Mono({ subsets: ['latin'], weight: ["400", "500", "700"], variable: "--font-firamono", display: "swap" })
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
-      <body className={inter.className}>
+      <body className={`${firaMono.variable}`}>
         <main className='max-w-4xl m-auto'>
           <header className="py-5 px-4 w-full border-b-2">
             <h1>
