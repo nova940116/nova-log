@@ -1,10 +1,10 @@
 import type { Metadata } from 'next'
-import { Fira_Mono, Noto_Sans_KR } from 'next/font/google'
+import { Roboto_Mono, Song_Myung } from 'next/font/google'
 import './globals.css'
 import Link from 'next/link'
 
-const firaMono = Fira_Mono({ subsets: ['latin'], weight: ["400", "500", "700"], variable: "--font-firamono", display: "swap" })
-const notoSansKR = Noto_Sans_KR({ subsets: ['latin'], weight: ["400", "500", "700"], variable: "--font-sans", display: "swap" })
+const robotoMono = Roboto_Mono({ subsets: ['latin'], weight: ["400", "500", "700"], variable: "--font-firamono", display: "swap" })
+const songMyung = Song_Myung({ subsets: ['latin'], weight: ["400"], variable: "--font-sans", display: "swap" })
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -14,8 +14,8 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
-      <body className={`${firaMono.variable} ${notoSansKR.variable}`}>
-        <main className='max-w-4xl m-auto'>
+      <body className={`${robotoMono.variable} ${songMyung.variable}`}>
+        <main className='max-w-4xl m-auto font-sans'>
           <header className="py-5 px-4 w-full border-b-2">
             <h1>
               <Link href="/">노바로그</Link>
